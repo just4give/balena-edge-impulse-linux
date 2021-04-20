@@ -1,0 +1,19 @@
+version: '2'
+services: 
+  ei-inference:
+        build: ./ei-inference
+        privileged: true
+        restart: always
+        
+        labels:
+                io.balena.features.dbus: '1'
+                io.balena.features.kernel-modules: '1'
+        volumes: 
+                - 'shared-data:/var/data'
+                - 'shared-media:/var/media'
+  
+
+volumes:
+        shared-data:
+        shared-media:
+        
