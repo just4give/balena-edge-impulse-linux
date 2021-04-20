@@ -1,1 +1,1 @@
-# balena-edge-impulse-linux
+# Edge Impulse Linus SDK support for balena
