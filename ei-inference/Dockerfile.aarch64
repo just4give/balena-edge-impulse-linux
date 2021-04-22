@@ -1,0 +1,36 @@
+#FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:latest
+#FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
+FROM balenalib/raspberrypi3-debian:buster
+
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -yq \
+    gcc g++ make build-essential \
+    nodejs \
+    wget \
+    v4l-utils \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    libvips-dev \
+    git \
+    gstreamer-1.0 \
+    sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps \
+    libasound2 \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN npm config set user root && sudo npm install edge-impulse-linux -g
+RUN npm install http-server -g
+#RUN printf "bcm2835-v4l2\n" >> /etc/modules
+WORKDIR /usr/src/app
+
+
+COPY ./app/ /usr/src/app/
+
+CMD ["node", "/usr/src/app/server.js"]
+
+
