@@ -1,6 +1,6 @@
-#FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:latest
 #FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
-FROM balenalib/raspberrypi3-debian:buster
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:latest
+#FROM balenalib/raspberrypi3-debian:buster
 
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
@@ -9,7 +9,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update && \
     apt-get install -yq \
     gcc g++ make build-essential \
-    nodejs \
+    #nodejs \
     wget \
     v4l-utils \
     python3 \
