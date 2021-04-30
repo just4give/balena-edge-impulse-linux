@@ -1,4 +1,5 @@
 name: balena-edge-impulse-linux
+type: "sw.application"
 data:
     applicationConfigVariables:
       - BALENA_HOST_CONFIG_start_x: 1
