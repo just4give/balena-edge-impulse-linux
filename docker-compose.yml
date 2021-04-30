@@ -11,7 +11,10 @@ services:
         volumes: 
                 - 'shared-data:/var/data'
                 - 'shared-media:/var/media'
-  
+        environment:
+                - UDEV=1
+        devices:
+                - '/dev:/dev'
 
 volumes:
         shared-data:
