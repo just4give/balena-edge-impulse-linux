@@ -20,3 +20,4 @@ data:
     supportedDeviceTypes: 
       - "raspberrypi4-64"
       - "fincm3"
+      - "raspberrypi3"
