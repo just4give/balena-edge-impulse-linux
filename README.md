@@ -31,5 +31,13 @@ Else you can build your own release by cloning this repo on your primary machine
 $ git clone https://github.com/just4give/balena-edge-impulse-linux.git
 $ cd balena-edge-impulse-linux
 $ balena login
-$ balena push agri-ai-v2
+$ balena push balena-edge-impulse-linux 
 ```
+
+### Running the Edge Impulse model 
+
+Once the app has been deployed type the following command on the ei-inference container terminal 
+```
+# edge-impulse-linux
+``` 
+and follow the instructions being laid down in the terminal.
