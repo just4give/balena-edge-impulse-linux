@@ -32,6 +32,6 @@ COPY ./app/ /usr/src/app/
 
 EXPOSE 4912
 
-CMD ["node", "/usr/src/app/server.js"]
+CMD ["/usr/src/app/ei_run.sh"]
 
 
