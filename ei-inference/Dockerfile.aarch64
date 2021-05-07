@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian-node:12
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12
 
 # Install dependencies
 RUN apt-get update && \
@@ -8,14 +8,23 @@ RUN apt-get update && \
     git \
     python3 \
     gstreamer-1.0 \
+    pkg-config pkg-config glib2.0-dev libexpat1-dev v4l-utils libjpeg62-turbo-dev \
     sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN npm config set user root && sudo npm install edge-impulse-linux -g
-RUN sed -i '31,32 s/^/\/\//' /usr/local/lib/node_modules/edge-impulse-linux/build/cli/linux/runner-downloader.js
-RUN sed -i '39,40 s/^/\/\//' /usr/local/lib/node_modules/edge-impulse-linux/build/cli/linux/runner-downloader.js
 
-#RUN printf "bcm2835-v4l2\n" >> /etc/modules
+# Compile libvips
+RUN cd /tmp && \
+    wget https://github.com/libvips/libvips/releases/download/v8.10.5/vips-8.10.5.tar.gz && \
+    tar xf vips-8.10.5.tar.gz && \
+    cd vips-8.10.5 && \
+    ./configure && \
+    make -j && \
+    sudo make install && \
+    sudo ldconfig
+
+RUN npm config set user root && sudo npm install edge-impulse-linux -g
+
 WORKDIR /usr/src/app
 
 
@@ -23,6 +32,6 @@ COPY ./app/ /usr/src/app/
 
 EXPOSE 4912
 
-CMD ["node", "/usr/src/app/server.js"]
+CMD ["/usr/src/app/ei_run.sh"]
 
 

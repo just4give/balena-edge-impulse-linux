@@ -18,6 +18,6 @@ RUN sed -i '39,40 s/^/\/\//' /usr/local/lib/node_modules/edge-impulse-linux/buil
 WORKDIR /usr/src/app
 COPY ./app/ /usr/src/app/
 EXPOSE 4912
-CMD ["node", "/usr/src/app/server.js"]
+CMD ["/usr/src/app/ei_run.sh"]
 
 
