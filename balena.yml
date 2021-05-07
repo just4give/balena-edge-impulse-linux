@@ -11,6 +11,9 @@ assets:
     data:
       url: "https://raw.githubusercontent.com/just4give/balena-edge-impulse-linux/master/logo.png"
 data:
+    applicationEnvironmentVariables:
+      - EI_COLLECT_MODE: 0
+      - EI_API_KEY: put_your_api_key
     applicationConfigVariables:
       - BALENA_HOST_CONFIG_start_x: 1
       - BALENA_HOST_CONFIG_gpu_mem_256: 192
