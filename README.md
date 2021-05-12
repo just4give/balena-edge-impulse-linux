@@ -1,6 +1,6 @@
 # Edge Impulse Linux SDK support for balena
 
-This project enables you to run Edge Impulse Linux SDK on balenaOS thus allowing you to manage a fleet of devices with the same software stack on them which can do various kinds of Machine Learning applications. 
+This project enables you to run Edge Impulse Linux SDK on balenaOS thus allowing you to manage a fleet of devices with the same software stack on them which can do various kinds of on-device Machine Learning applications. 
 
 ### Hardware 
 <table>
@@ -44,3 +44,5 @@ Once the app has been deployed type the following command on the ei-inference co
 # edge-impulse-linux
 ``` 
 and follow the instructions being laid down in the terminal.
+
+#### Check out our Hackster project [here](https://www.hackster.io/400741/edge-impulse-object-detection-on-balena-os-fb76ae)!
